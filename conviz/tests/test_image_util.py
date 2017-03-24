@@ -4,7 +4,7 @@ from unittest import TestCase
 import numpy
 from PIL import Image
 
-from conviz.src.image_util import save_image
+from conviz.src.image_util import ImageUtil
 
 
 class TestImageUtil(TestCase):
@@ -15,6 +15,28 @@ class TestImageUtil(TestCase):
     def tearDown(self):
         self._remove_test_image_if_exists()
 
+    def test_build_grid_image(self):
+        # Create a list of same-size random images
+        img_dim = (64, 48, 3)
+        images = [numpy.random.random(img_dim) for _ in range(6)]
+
+        # Build a grid image with the list of images
+        grid_dim = (3, 2)
+        padding = (5, 5)
+        grid_img = ImageUtil.build_grid_image(images, grid_dim, padding)
+
+        # Verify that the grid image's dimensions are as expected
+        expected_grid_image_shape = (
+            padding[0] + (img_dim[0] + padding[0]) * grid_dim[0],
+            padding[1] + (img_dim[1] + padding[1]) * grid_dim[1],
+            3
+        )
+        self.assertTupleEqual(
+            grid_img.shape[:2],
+            expected_grid_image_shape[:2],
+            "The build grid image has incorrect shape."
+        )
+
     def test_save_image(self):
         # Define the dimensions of the image data
         img_dim = (128, 256, 3)
@@ -23,7 +45,7 @@ class TestImageUtil(TestCase):
         img = numpy.random.random(img_dim)
 
         # Save the image
-        save_image(img, self.img_save_path)
+        ImageUtil.save_image(img, self.img_save_path)
 
         # Verify that the image file was created
         self.assertTrue(
