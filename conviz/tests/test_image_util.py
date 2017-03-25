@@ -73,7 +73,3 @@ class TestImageUtil(TestCase):
     def _remove_test_image_if_exists(self):
         if os.path.exists(self.img_save_path):
             os.remove(self.img_save_path)
-
-
-if __name__ == "__main__":
-    pass

@@ -11,5 +11,5 @@ setup(
     download_url="https://github.com/phtrempe/conviz/archive/0.1.tar.gz",
     keywords=["convolutional", "neural", "layer", "visualization"],
     classifiers=[],
-    requires=["numpy", "scipy", "pillow"]
+    requires=["numpy", "scipy", "pillow", "keras"]
 )
