@@ -4,7 +4,7 @@ from setuptools import find_packages
 
 setup(
     name="conviz",
-    version="0.1",
+    version="0.2",
     description="A convolutional neural layer visualization library",
     author="Philippe Trempe",
     author_email="ph.trempe@gmail.com",
