@@ -4,7 +4,7 @@ from unittest import TestCase
 
 from keras.models import load_model
 
-from conviz.src.gradient_ascent_optimizer import GradientAscentOptimizer
+from conviz.gradient_ascent_optimizer import GradientAscentOptimizer
 
 
 class TestGradientAscentOptimizer(TestCase):
