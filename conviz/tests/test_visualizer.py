@@ -4,7 +4,7 @@ from unittest import TestCase
 
 from keras.models import load_model
 
-from conviz.src.visualizer import Visualizer
+from conviz.visualizer import Visualizer
 
 
 class TestVisualizer(TestCase):

@@ -1,8 +1,8 @@
 import numpy
 from PIL import Image
 
-from conviz.src.gradient_ascent_optimizer import GradientAscentOptimizer
-from conviz.src.image_util import ImageUtil
+from conviz.gradient_ascent_optimizer import GradientAscentOptimizer
+from conviz.image_util import ImageUtil
 
 
 class Visualizer(object):
