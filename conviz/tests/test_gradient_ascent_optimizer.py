@@ -15,7 +15,7 @@ class TestGradientAscentOptimizer(TestCase):
 
     def test_optimize(self):
         # Create a gradient ascent optimizer
-        gao = GradientAscentOptimizer(self.cifar10_model)
+        gao = GradientAscentOptimizer(self.cifar10_model, num_steps=5)
 
         expected_out_img_shape = (*self.cifar10_model.input_shape[1:3], 3)
         conv_layer_names = ["conv1", "conv2"]
