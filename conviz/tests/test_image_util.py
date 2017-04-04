@@ -4,7 +4,7 @@ from unittest import TestCase
 import numpy
 from PIL import Image
 
-from conviz.src.image_util import ImageUtil
+from conviz.utils.image_util import ImageUtil
 
 
 class TestImageUtil(TestCase):

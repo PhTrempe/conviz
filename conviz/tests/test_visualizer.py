@@ -1,21 +1,13 @@
-import inspect
-import os
 from unittest import TestCase
 
-from keras.models import load_model
-
-from conviz.src.visualizer import Visualizer
+from conviz.models import cifar10
+from conviz.visualizer import Visualizer
 
 
 class TestVisualizer(TestCase):
-    def setUp(self):
-        self.dir = os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
-        self.cifar10_model_path = os.path.join(self.dir, "data", "cifar10.h5")
-        self.cifar10_model = load_model(self.cifar10_model_path)
-
     def test_visualize(self):
         # Load a model trained on the CIFAR10 dataset
-        model = self.cifar10_model
+        model = cifar10.load()
 
         # Create a visualizer for the model
         visualizer = Visualizer(model)
