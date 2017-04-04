@@ -1,29 +1,24 @@
-import inspect
-import os
 from unittest import TestCase
 
-from keras.models import load_model
-
 from conviz.gradient_ascent_optimizer import GradientAscentOptimizer
+from conviz.models import cifar10
 
 
 class TestGradientAscentOptimizer(TestCase):
-    def setUp(self):
-        self.dir = os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
-        self.cifar10_model_path = os.path.join(self.dir, "data", "cifar10.h5")
-        self.cifar10_model = load_model(self.cifar10_model_path)
-
     def test_optimize(self):
-        # Create a gradient ascent optimizer
-        gao = GradientAscentOptimizer(self.cifar10_model, num_steps=5)
+        # Load a model trained on the CIFAR10 dataset
+        model = cifar10.load()
 
-        expected_out_img_shape = (*self.cifar10_model.input_shape[1:3], 3)
+        # Create a gradient ascent optimizer
+        gao = GradientAscentOptimizer(model, num_steps=5)
+
+        expected_out_img_shape = (*model.input_shape[1:3], 3)
         conv_layer_names = ["conv1", "conv2"]
 
         # Perform gradient ascent for filters of convolutional layers
         for conv_layer_name in conv_layer_names:
             # Get the convolutional layer by its name
-            conv_layer = self.cifar10_model.get_layer(conv_layer_name)
+            conv_layer = model.get_layer(conv_layer_name)
 
             num_conv_filters = conv_layer.output_shape[3]
 
