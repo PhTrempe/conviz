@@ -2,7 +2,7 @@ import numpy
 from PIL import Image
 
 from conviz.gradient_ascent_optimizer import GradientAscentOptimizer
-from conviz.image_util import ImageUtil
+from conviz.utils.image_util import ImageUtil
 
 
 class Visualizer(object):
